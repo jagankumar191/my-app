@@ -1,0 +1,96 @@
+<div class="container">
+  
+  <form [formGroup]="form" (ngSubmit)="submitForm()" novalidate>
+    <div class="panel panel-primary">
+      <div class="panel-heading">{{title}}</div>
+      <div class="panel-body">
+        <div class="form-group">
+          <label for="username">User Name</label>
+          <input type="text" class="form-control" id="username" formControlName="username" placeholder="Username"
+            required minlength="4">
+          <div
+            *ngIf="form.controls['username'].invalid && (form.controls['username'].dirty || form.controls['username'].touched)"
+            class="alert alert-danger">
+            <div *ngIf="form.controls['username'].errors.required">
+              Name is required.
+            </div>
+            <div *ngIf="form.controls['username'].errors.minlength">
+              Name must be at least 4 characters long.
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" formControlName="password" placeholder="Password"
+            required>
+          <div
+            *ngIf="form.controls['password'].invalid && (form.controls['password'].dirty || form.controls['password'].touched)"
+            class="alert alert-danger">
+            <div *ngIf="form.controls['password'].errors.required">
+              Password is required.
+            </div>
+            <div *ngIf="form.controls['password'].errors.minlength">
+              Password must be at least 5 characters long.
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" class="form-control" id="email" formControlName="email" aria-describedby="emailHelp"
+            placeholder="Email" required>
+          <small id="emailHelp" class="form-text text-muted">Enter Email (i.e, yourEmailId@gmail.com) </small>
+          <div
+            *ngIf="form.controls['email'].invalid && (form.controls['email'].dirty || form.controls['email'].touched)"
+            class="alert alert-danger">
+            <div *ngIf="form.controls['email'].errors.required">
+              Email is required.
+            </div>
+            <div *ngIf="form.controls['email'].errors.pattern">
+              Email pattern mismatched
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="role">Role</label>
+          <select class="form-control" id="role" formControlName="role">
+            <option>Employee</option>
+            <option>Admin</option>
+          </select>
+          <div *ngIf="form.controls['role'].invalid && (form.controls['role'].dirty || form.controls['role'].touched)"
+            class="alert alert-danger">
+            <div *ngIf="form.controls['role'].errors.required">
+              Role is required.
+            </div>
+
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="createdon">Created On</label>
+          <input type="text" class="form-control" id="createdon" formControlName="createdon"
+            readonly>
+
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input type="number" class="form-control" id="phone" formControlName="phone" placeholder="Phone" required>
+          <div
+            *ngIf="form.controls['phone'].invalid && (form.controls['phone'].dirty || form.controls['phone'].touched)"
+            class="alert alert-danger">
+            <div *ngIf="form.controls['phone'].errors.required">
+              Phone number is required.
+            </div>
+            <div *ngIf="form.controls['phone'].errors.pattern">
+              Phone number must be 10 numbers long.
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="panel-footer">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>
